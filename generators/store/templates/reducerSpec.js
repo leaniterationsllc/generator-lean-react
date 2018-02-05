@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import <%= storeName %>, * as from<%= storeName %> from '..';
+import <%= storeName %>, * as from<%= storeCapitalized %> from '..';
 
 const reducer = combineReducers({
   <%= storeName %>,
 });
 
-describe('<%= componentName %>', () => {
+describe('<%= storeName %>', () => {
   let defaultState;
 
   beforeEach(() => {
