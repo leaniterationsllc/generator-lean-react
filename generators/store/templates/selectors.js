@@ -1,1 +1,1 @@
-export default get<%= storeCapitalized %> = (state) => state.<%= storeName %>;
+export default state => state.<%= storeName %>;
