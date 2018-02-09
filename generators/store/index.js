@@ -50,7 +50,7 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('reducer.js'),
-      this.destinationPath(`store/${storeName}/reducer/index.js`),
+      this.destinationPath(`store/${storeName}/reducers/index.js`),
       vars
     );
 
