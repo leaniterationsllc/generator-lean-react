@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import reducer from './reducers';
 
 export * from './actions';
 export * from './selectors';
