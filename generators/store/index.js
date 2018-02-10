@@ -37,43 +37,43 @@ module.exports = class extends Generator {
     };
 
     this.fs.copyTpl(
-      this.templatePath('actions.js'),
+      this.templatePath('actions.ejs'),
       this.destinationPath(`store/${storeName}/actions/index.js`),
       vars
     );
 
     this.fs.copyTpl(
-      this.templatePath('constants.js'),
+      this.templatePath('constants.ejs'),
       this.destinationPath(`store/${storeName}/_constants.js`),
       vars
     );
 
     this.fs.copyTpl(
-      this.templatePath('reducer.js'),
+      this.templatePath('reducer.ejs'),
       this.destinationPath(`store/${storeName}/reducers/index.js`),
       vars
     );
 
     this.fs.copyTpl(
-      this.templatePath('reducerSpec.js'),
+      this.templatePath('reducerSpec.ejs'),
       this.destinationPath(`store/${storeName}/__tests__/reducer.spec.js`),
       vars
     );
 
     this.fs.copyTpl(
-      this.templatePath('root.js'),
+      this.templatePath('root.ejs'),
       this.destinationPath(`store/${storeName}/index.js`),
       vars
     );
 
     this.fs.copyTpl(
-      this.templatePath('saga.js'),
+      this.templatePath('saga.ejs'),
       this.destinationPath(`store/${storeName}/sagas/index.js`),
       vars
     );
 
     this.fs.copyTpl(
-      this.templatePath('selectors.js'),
+      this.templatePath('selectors.ejs'),
       this.destinationPath(`store/${storeName}/selectors/index.js`),
       vars
     );

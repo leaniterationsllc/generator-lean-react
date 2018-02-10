@@ -5,6 +5,10 @@ const reducer = combineReducers({
   <%= storeName %>,
 });
 
+const buildState = state => ({
+  <%= storeName %>: state,
+});
+
 describe('<%= storeName %>', () => {
   let defaultState;
 
@@ -16,6 +20,6 @@ describe('<%= storeName %>', () => {
     let empty;
     const state = reducer(empty, { type: 'NOOP' });
 
-    expect(state).toEqual(defaultState);
+    expect(state).toEqual(buildState(defaultState));
   });
 });
