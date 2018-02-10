@@ -14,7 +14,7 @@ describe('generator-lean-react:store', () => {
     it('create the store file structure', () => {
       assert.file(['store/foo/actions/index.js']);
       assert.file(['store/foo/_constants.js']);
-      assert.file(['store/foo/reducer/index.js']);
+      assert.file(['store/foo/reducers/index.js']);
       assert.file(['store/foo/__tests__/reducer.spec.js']);
       assert.file(['store/foo/index.js']);
       assert.file(['store/foo/sagas/index.js']);
