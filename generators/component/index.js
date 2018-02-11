@@ -13,9 +13,9 @@ module.exports = class extends Generator {
       default: false
     });
 
-    // Component name
-    this.option('name', {
-      type: String
+    this.argument('name', {
+      type: String,
+      description: 'Generator name'
     });
   }
   prompting() {
