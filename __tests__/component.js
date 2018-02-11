@@ -13,7 +13,7 @@ describe('generator-lean-react:component', () => {
     });
 
     it('create the component files', () => {
-      assert.file(['components/Foo.js']);
+      assert.file(['components/Foo.js', 'components/Foo.spec.js']);
     });
 
     it('it is a functional component', () => {
@@ -26,15 +26,15 @@ describe('generator-lean-react:component', () => {
       return helpers
         .run(path.join(__dirname, '../generators/component'))
         .withOptions({ name: 'Foo' })
-        .withPrompts({ fn: false });
+        .withPrompts({ fn: false, location: 'super' });
     });
 
     it('create the component files', () => {
-      assert.file(['components/Foo.js']);
+      assert.file(['components/super/Foo.js', 'components/super/Foo.spec.js']);
     });
 
     it('it is a functional component', () => {
-      assert.fileContent('components/Foo.js', /class Foo extends Component/);
+      assert.fileContent('components/super/Foo.js', /class Foo extends PureComponent/);
     });
   });
 });
