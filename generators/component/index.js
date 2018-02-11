@@ -36,6 +36,14 @@ module.exports = class extends Generator {
         required: true
       });
     }
+
+    prompts.push({
+      type: 'input',
+      name: 'location',
+      message: 'Child Directory',
+      default: ''
+    });
+
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = {
@@ -47,11 +55,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const { fn, name } = this.props;
-    const file = fn === true ? 'ComponentFn.js' : 'ComponentClass.js';
+    const { fn, name, location } = this.props;
+    const file = fn === true ? 'ComponentFn.ejs' : 'ComponentClass.ejs';
+    const base = `components/${location}`;
+
+    this.fs.copyTpl(this.templatePath(file), this.destinationPath(`${base}/${name}.js`), {
+      componentName: name
+    });
+
     this.fs.copyTpl(
-      this.templatePath(file),
-      this.destinationPath(`components/${name}.js`),
+      this.templatePath('ComponentSpec.ejs'),
+      this.destinationPath(`${base}/${name}.spec.js`),
       {
         componentName: name
       }
