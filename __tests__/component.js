@@ -32,9 +32,5 @@ describe('generator-lean-react:component', () => {
     it('create the component files', () => {
       assert.file(['components/super/Foo.js', 'components/super/Foo.spec.js']);
     });
-
-    it('it is a functional component', () => {
-      assert.fileContent('components/super/Foo.js', /class Foo extends PureComponent/);
-    });
   });
 });

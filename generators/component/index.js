@@ -7,15 +7,15 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.argument('name', {
+      type: String,
+      description: 'Generator name'
+    });
+
     // Specify it is a pure functional component.
     this.option('fn', {
       type: Boolean,
       default: false
-    });
-
-    this.argument('name', {
-      type: String,
-      description: 'Generator name'
     });
   }
   prompting() {

@@ -1,0 +1,22 @@
+import { takeLatest } from 'redux-saga/effects';
+import * as types from '../../constants';
+import * as actions from '../actions';
+import saga, { <%= funcName %> } from './<%= name %>';
+
+describe('<%= name %>', () => {
+  it('default', () => {
+    expect(saga).toEqual(takeLatest(types.ACTION, <%= funcName %>));
+  });
+
+  describe('<%= funcName %>', () => {
+    let gen;
+
+    beforeAll(() => {
+      gen = <%= funcName %>(actions.doThing());
+    });
+
+    it('then complete', () => {
+      expect(gen.next().done).toBeTruthy();
+    });
+  });
+});
