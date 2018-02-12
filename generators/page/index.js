@@ -9,14 +9,8 @@ module.exports = class extends Generator {
 
     this.argument('name', {
       type: String,
-      description: 'Generator name',
+      description: 'Page name',
       required: false
-    });
-
-    // Specify it is a pure functional component.
-    this.option('fn', {
-      type: Boolean,
-      default: false
     });
   }
   prompting() {
@@ -33,32 +27,24 @@ module.exports = class extends Generator {
       prompts.push({
         type: 'input',
         name: 'name',
-        message: 'Component Name?',
+        message: 'Page name?',
         required: true
       });
     }
-
-    prompts.push({
-      type: 'input',
-      name: 'location',
-      message: 'Child Directory',
-      default: ''
-    });
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = {
         name: this.options.name,
-        fn: this.options.fn,
         ...props
       };
     });
   }
 
   writing() {
-    const { fn, name, location } = this.props;
-    const file = fn === true ? 'ComponentFn.ejs' : 'ComponentClass.ejs';
-    const base = `components/${location}`;
+    const { name } = this.props;
+    const file = 'Component.ejs';
+    const base = 'pages';
 
     this.fs.copyTpl(this.templatePath(file), this.destinationPath(`${base}/${name}.js`), {
       componentName: name
