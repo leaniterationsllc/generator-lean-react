@@ -1,0 +1,23 @@
+import React from 'react';
+import ShallowRenderer from 'react-test-renderer/shallow';
+import <%= componentName %> from './<%= componentName %>';
+
+describe('<%= componentName %>', () => {
+  let shallowRenderer;
+  let baseProps;
+
+  beforeEach(() => {
+    baseProps = {};
+
+    shallowRenderer = new ShallowRenderer();
+  });
+
+  test('render', () => {
+    shallowRenderer.render(
+      <<%= componentName %> {...baseProps} />,
+    );
+
+    const tree = shallowRenderer.getRenderOutput();
+    expect(tree).toMatchSnapshot();
+  });
+});

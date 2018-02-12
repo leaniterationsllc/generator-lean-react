@@ -25,7 +25,7 @@ describe('generator-lean-react:component', () => {
     beforeAll(() => {
       return helpers
         .run(path.join(__dirname, '../generators/component'))
-        .withOptions({ name: 'Foo' })
+        .withArguments('Foo')
         .withPrompts({ fn: false, location: 'super' });
     });
 
