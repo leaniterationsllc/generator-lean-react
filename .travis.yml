@@ -21,7 +21,7 @@ script:
   - yarn test
 
 before_deploy:
-  - yarn add nsp -D --no-lockfile
+  - yarn global add nsp
 deploy:
   provider: npm
   email: "acordova05@gmail.com"
