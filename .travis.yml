@@ -20,6 +20,8 @@ install:
 script:
   - yarn test
 
+before_deploy:
+  - yarn add nsp -D --no-lockfile
 deploy:
   provider: npm
   email: "acordova05@gmail.com"
