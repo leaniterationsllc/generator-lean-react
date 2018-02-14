@@ -2,7 +2,7 @@
   "name": "generator-lean-react",
   "version": "0.1.0",
   "description": "React and React Native Conventions for Lean Iterations LLC",
-  "homepage": "",
+  "homepage": "https://github.com/leaniterationsllc/generator-lean-react",
   "author": {
     "name": "Aaron Cordova",
     "email": "acordova05@gmail.com",
@@ -67,6 +67,9 @@
     },
     "plugins": ["prettier"]
   },
-  "repository": "leaniterationsllc/generator-lean-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leaniterationsllc/generator-lean-react"
+  },
   "license": "Apache-2.0"
 }

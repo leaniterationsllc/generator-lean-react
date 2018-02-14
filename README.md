@@ -1,4 +1,4 @@
-# generator-lean-react [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-lean-react [![NPM version][npm-image]][npm-url] [![Build Status](https://travis-ci.org/leaniterationsllc/generator-lean-react.svg?branch=master)](https://travis-ci.org/leaniterationsllc/generator-lean-react)
 > React and React Native Conventions for Lean Iterations LLC
 
 ## Installation
