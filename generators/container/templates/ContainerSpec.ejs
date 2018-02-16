@@ -1,0 +1,51 @@
+/* eslint import/first: 0 */
+jest.mock('./../configureStore');
+
+import React from 'react';
+import ShallowRenderer from 'react-test-renderer/shallow';
+import <%= componentName %>, { mapDispatchToProps } from './<%= name %>';
+
+const configureStore = require('./../configureStore');
+
+describe('<%= componentName %>', () => {
+  let shallowRenderer;
+  let baseProps;
+  let store;
+
+  beforeEach(() => {
+    store = configureStore();
+    baseProps = {
+      store,
+    };
+
+    shallowRenderer = new ShallowRenderer();
+  });
+
+  test('render', () => {
+    shallowRenderer.render(
+      <<%= componentName %> {...baseProps} />,
+    );
+
+    const tree = shallowRenderer.getRenderOutput();
+
+    expect(tree.props).toMatchObject({
+      something: false,
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    let mockDispatch;
+
+    beforeEach(() => {
+      mockDispatch = jest.fn();
+    });
+
+    test('properties', () => {
+      const props = mapDispatchToProps(mockDispatch);
+
+      expect(props).toEqual({
+        doThing: expect.any(Function)
+      });
+    });
+  });
+});
