@@ -1,4 +1,5 @@
 import React from 'react';
+import renderer from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import <%= componentName %> from './<%= componentName %>';
 
@@ -19,5 +20,13 @@ describe('<%= componentName %>', () => {
 
     const tree = shallowRenderer.getRenderOutput();
     expect(tree).toMatchSnapshot();
+  });
+
+  test('deep render', () => {
+    const testRenderer = renderer.create(
+      <<%= componentName %> {...baseProps} />,
+    );
+
+    expect(testRenderer.toJSON()).toMatchSnapshot();
   });
 });
