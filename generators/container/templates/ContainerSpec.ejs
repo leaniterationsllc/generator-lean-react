@@ -3,11 +3,11 @@ jest.mock('./../configureStore');
 
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import <%= componentName %>, { mapDispatchToProps } from './<%= name %>';
+import <%= name %>, { mapDispatchToProps } from './<%= name %>';
 
 const configureStore = require('./../configureStore');
 
-describe('<%= componentName %>', () => {
+describe('<%= name %>', () => {
   let shallowRenderer;
   let baseProps;
   let store;
@@ -23,7 +23,7 @@ describe('<%= componentName %>', () => {
 
   test('render', () => {
     shallowRenderer.render(
-      <<%= componentName %> {...baseProps} />,
+      <<%= name %> {...baseProps} />,
     );
 
     const tree = shallowRenderer.getRenderOutput();
