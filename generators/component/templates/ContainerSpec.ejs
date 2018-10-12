@@ -1,11 +1,11 @@
 /* eslint import/first: 0 */
-jest.mock('./../configureStore');
+jest.mock('./../../configureStore');
 
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import <%= name %>, { mapDispatchToProps } from './<%= name %>';
+import Container, { mapDispatchToProps } from './<%= name %>.container';
 
-const configureStore = require('./../configureStore');
+const configureStore = require('./../../configureStore');
 
 describe('<%= name %>', () => {
   let shallowRenderer;
@@ -23,7 +23,7 @@ describe('<%= name %>', () => {
 
   test('render', () => {
     shallowRenderer.render(
-      <<%= name %> {...baseProps} />,
+      <Container {...baseProps} />,
     );
 
     const tree = shallowRenderer.getRenderOutput();
@@ -44,7 +44,6 @@ describe('<%= name %>', () => {
       const props = mapDispatchToProps(mockDispatch);
 
       expect(props).toEqual({
-        doThing: expect.any(Function)
       });
     });
   });

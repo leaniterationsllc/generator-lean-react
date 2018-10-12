@@ -18,6 +18,11 @@ module.exports = class extends Generator {
       type: Boolean,
       default: false
     });
+
+    this.option('container', {
+      type: Boolean,
+      default: false
+    });
   }
   prompting() {
     // Have Yeoman greet the user.
@@ -50,26 +55,52 @@ module.exports = class extends Generator {
       this.props = {
         name: this.options.name,
         fn: this.options.fn,
+        container: this.options.container,
         ...props
       };
     });
   }
 
   writing() {
-    const { fn, name, location } = this.props;
+    const { fn, name, location, container } = this.props;
     const file = fn === true ? 'ComponentFn.ejs' : 'ComponentClass.ejs';
-    const base = `components/${location}`;
+    const base = `components/${location}/${name}`;
 
-    this.fs.copyTpl(this.templatePath(file), this.destinationPath(`${base}/${name}.js`), {
-      componentName: name
-    });
+    const vars = {
+      name,
+      container
+    };
+
+    this.fs.copyTpl(
+      this.templatePath('index.ejs'),
+      this.destinationPath(`${base}/index.js`),
+      vars
+    );
+
+    this.fs.copyTpl(
+      this.templatePath(file),
+      this.destinationPath(`${base}/${name}.component.js`),
+      vars
+    );
 
     this.fs.copyTpl(
       this.templatePath('ComponentSpec.ejs'),
-      this.destinationPath(`${base}/${name}.spec.js`),
-      {
-        componentName: name
-      }
+      this.destinationPath(`${base}/${name}.component.spec.js`),
+      vars
     );
+
+    // Container
+    if (container === true) {
+      this.fs.copyTpl(
+        this.templatePath('Container.ejs'),
+        this.destinationPath(`${base}/${name}.container.js`),
+        vars
+      );
+      this.fs.copyTpl(
+        this.templatePath('ContainerSpec.ejs'),
+        this.destinationPath(`${base}/${name}.container.spec.js`),
+        vars
+      );
+    }
   }
 };

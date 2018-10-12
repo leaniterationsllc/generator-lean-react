@@ -1,0 +1,12 @@
+<% if (container) { %>
+import Container from './<%= name %>.container';
+
+export { default as <%= name %> } from './<%= name %>.component';
+
+export default Container;
+<% } %>
+<% if (!container) { %>
+import Component from './<%= name %>.component';
+
+export default Component;
+<% } %>
