@@ -23,6 +23,11 @@ module.exports = class extends Generator {
       type: Boolean,
       default: false
     });
+
+    this.option('location', {
+      type: String,
+      default: ''
+    });
   }
   prompting() {
     // Have Yeoman greet the user.
@@ -43,12 +48,12 @@ module.exports = class extends Generator {
       });
     }
 
-    prompts.push({
-      type: 'input',
-      name: 'location',
-      message: 'Child Directory',
-      default: ''
-    });
+    // Prompts.push({
+    //   type: 'input',
+    //   name: 'location',
+    //   message: 'Child Directory',
+    //   default: ''
+    // });
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
@@ -56,6 +61,7 @@ module.exports = class extends Generator {
         name: this.options.name,
         fn: this.options.fn,
         container: this.options.container,
+        location: this.options.location,
         ...props
       };
     });
